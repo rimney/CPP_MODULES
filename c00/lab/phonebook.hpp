@@ -6,7 +6,7 @@
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:38:50 by rimney            #+#    #+#             */
-/*   Updated: 2022/09/24 04:52:50 by rimney           ###   ########.fr       */
+/*   Updated: 2022/09/25 01:33:49 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ class Phonebook
         void    display_contact(int num);
     private:
         int index;
+        int index_save;
         Contact t[8];
 };
 
@@ -104,12 +105,18 @@ void       Phonebook::display_contact(int index)
 {
     std::cout << "\n<---------------------PHONEBOOK--------------------->\n";
     std::cout << "<------>First Name : " << t[index].get_first_name() << std::endl;
+    std::cout << "<------>Last Name : " << t[index].get_last_name() << std::endl;
+    std::cout << "<------>Phone Number : " << t[index].get_phone_number() << std::endl;
+    std::cout << "<------>NickName : " << t[index].get_nick_name() << std::endl;
+    std::cout << "<------>Darkest Secret : " << t[index].get_darkest_secret() << std::endl;
+    std::cout << "<---------------------PHONEBOOK--------------------->\n";
 }
 
 void	Phonebook::search(void)
 {
 	int i = 0;
     int num;
+    int flag = 0;
     std::string input;
     while(1)
     {
@@ -118,25 +125,35 @@ void	Phonebook::search(void)
         {
             std::cout << "|----------|----------|----------|----------|\n";
             std::cout << "|index     |First Name|Last Name |Nickname  |\n";
-            while(i < index)
+            while(i < index_save)
             {
                 std::cout << "|----------|----------|----------|----------|\n";
                 std::cout << "|" << std::setw(10) << i + 1 << "|";
-                display_10_C(t[index - 1].get_first_name());
+                display_10_C(t[i].get_first_name());
                 std::cout << "|";
-                display_10_C(t[index - 1].get_last_name());
+                display_10_C(t[i].get_last_name());
                 std::cout << "|";
-                display_10_C(t[index - 1].get_nick_name());
+                display_10_C(t[i].get_nick_name());
                 std::cout << "|\n";
                 std::cout << "|----------|----------|----------|----------|\n";
                 i++;
             }
             while(1)
             {
-                while(input.empty())
+                if(!flag)
                 {
                     getline(std::cin, input);
-                    std::cout << "Please Enter The Index Or EXIT : ";
+                    input.clear();
+                    flag = 1;
+                }
+                while(input.empty())
+                {
+                    
+                        std::cout << "Please Enter The Index Or EXIT : ";
+                    getline(std::cin, input);
+                    if(std::cin.eof())
+                        std::exit(0);
+                    
                 }
                 if(ft_is_digit(input) && !input.empty())
                 {
@@ -148,7 +165,7 @@ void	Phonebook::search(void)
                         break;
                     }
                     else
-                        std::cout << num << " Out Of Range";
+                        std::cout << num << " Out Of Range\n";
                 }
                 else if(input == "EXIT")
                 {
@@ -171,33 +188,44 @@ void	Phonebook::add_contact(void)
 {
 	std::string input;
 
+    if(index > 7)
+         index = 0;
+
     getline(std::cin, input);
     input.clear();
     while (input.empty())
     {
         std::cout << "Enter First Name : ";
 	    getline(std::cin, input);
+        if(std::cin.eof())
+            std::exit(0);
 		Phonebook::t[index].set_first_name(input);
     }
     input.clear();
     while(input.empty())
     {
-	std::cout << "Enter Last Name : ";
-	getline(std::cin, input);
+	    std::cout << "Enter Last Name : ";
+        getline(std::cin, input);
+        if(std::cin.eof())
+            std::exit(0);
 		Phonebook::t[index].set_last_name(input);
     }
     input.clear();
     while(input.empty())
     {
-    std::cout << "Enter Phone Number : ";
-	getline(std::cin, input);
+        std::cout << "Enter Phone Number : ";
+	    getline(std::cin, input);
+        if(std::cin.eof())
+            std::exit(0);
 		Phonebook::t[index].set_phone_number(input);
     }
     input.clear();
     while(input.empty())
     {
-    std::cout << "Enter Nickname : ";
-	getline(std::cin, input);
+        std::cout << "Enter Nickname : ";
+	    getline(std::cin, input);
+        if(std::cin.eof())
+            std::exit(0);
 		Phonebook::t[index].set_nick_name(input);
     }
     input.clear();
@@ -205,10 +233,17 @@ void	Phonebook::add_contact(void)
     {
         std::cout << "Enter Darkest Secret : ";
 	    getline(std::cin, input);
-		    Phonebook::t[index].set_darkest_secret(input);	
+        if(std::cin.eof())
+            std::exit(0);
+		Phonebook::t[index].set_darkest_secret(input);	
     }
     input.clear();
-	index += 1;
+    index += 1;
+    index_save += 1;
+    if(index_save > 8)
+        index_save = 8;
+	// if(index_save > 7)
+    //     index = 8;
 }
 
 void	Phonebook::display_prompt(void)
