@@ -6,10 +6,12 @@
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 21:38:50 by rimney            #+#    #+#             */
-/*   Updated: 2022/09/25 22:08:24 by rimney           ###   ########.fr       */
+/*   Updated: 2022/09/27 01:24:07 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef PHONEBOOK_HPP
+#define PHONEBOOK_HPP
 #include <iostream>
 #include <iomanip>
 
@@ -47,14 +49,4 @@ class Phonebook
         Contact t[8];
 };
 
-
-
-
-
-
-
-
-
-
-
-
+#endif

@@ -6,7 +6,7 @@
 #    By: rimney <rimney@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/09/25 22:21:20 by rimney            #+#    #+#              #
-#    Updated: 2022/09/25 22:27:25 by rimney           ###   ########.fr        #
+#    Updated: 2022/09/27 01:26:17 by rimney           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,8 @@ FLAGS = -Wall -Wextra -Werror -std=c++98
 
 all :
 	c++ $(FLAGS) $(SRCS) -o $(NAME)
-clean :
+clean:
 	rm -f $(NAME)
-fclean :
+fclean:
 	rm -f $(NAME)
+re : fclean all
