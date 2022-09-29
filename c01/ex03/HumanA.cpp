@@ -1,21 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/27 20:28:50 by rimney            #+#    #+#             */
-/*   Updated: 2022/09/28 23:27:45 by rimney           ###   ########.fr       */
+/*   Created: 2022/09/29 00:45:05 by rimney            #+#    #+#             */
+/*   Updated: 2022/09/29 02:47:21 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "HumanA.hpp"
+#include "Weapon.hpp"
 
-int main()
+
+
+void    HumanA::set_name(std::string name)
 {
-    Zombie *Z = zombieHorde(5, "rimney");
-    for(int i = 0; i < 5; i++)
-        Z[i].announce();
-     delete [] Z;
+    this->_Name = name;
+}
+
+std::string HumanA::get_name(void)
+{
+    return (this->_Name);
+}
+
+HumanA::HumanA(std::string human, Weapon &W) :
+    _Name(human), W(W)
+{}
+
+void    HumanA::attack(void)
+{
+    std::cout << get_name() << " attack with their " << W.get_type() << std::endl;
 }

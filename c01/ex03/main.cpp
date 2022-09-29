@@ -5,17 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/27 20:28:50 by rimney            #+#    #+#             */
-/*   Updated: 2022/09/28 23:27:45 by rimney           ###   ########.fr       */
+/*   Created: 2022/09/29 02:08:16 by rimney            #+#    #+#             */
+/*   Updated: 2022/09/29 02:57:37 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
+#include "Weapon.hpp"
 
 int main()
 {
-    Zombie *Z = zombieHorde(5, "rimney");
-    for(int i = 0; i < 5; i++)
-        Z[i].announce();
-     delete [] Z;
+{
+Weapon club = Weapon("crude spiked club");
+HumanA bob("Bob", club);
+bob.attack();
+club.set_type("some other type of club");
+bob.attack();
+}
+{
+Weapon club = Weapon("crude spiked club");
+HumanB jim("Jim");
+jim.setWeapon(club);
+jim.attack();
+club.set_type("some other type of club");
+jim.attack();
+}
+return 0;
 }

@@ -1,21 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/27 20:28:50 by rimney            #+#    #+#             */
-/*   Updated: 2022/09/28 23:27:45 by rimney           ###   ########.fr       */
+/*   Created: 2022/09/29 00:51:06 by rimney            #+#    #+#             */
+/*   Updated: 2022/09/29 02:17:38 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "HumanA.hpp"
+#include "HumanB.hpp"
+#include "Weapon.hpp"
 
-int main()
+Weapon::Weapon()
 {
-    Zombie *Z = zombieHorde(5, "rimney");
-    for(int i = 0; i < 5; i++)
-        Z[i].announce();
-     delete [] Z;
+    
+}
+
+void Weapon::set_type(std::string typee)
+{
+    this->type = typee;
+}
+
+std::string Weapon::get_type(void)
+{
+    return (this->type);
+}
+
+Weapon::Weapon(std::string type)
+{
+    set_type(type);
 }

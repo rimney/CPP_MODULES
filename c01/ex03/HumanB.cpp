@@ -1,42 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/27 20:28:52 by rimney            #+#    #+#             */
-/*   Updated: 2022/09/28 21:57:59 by rimney           ###   ########.fr       */
+/*   Created: 2022/09/29 02:49:19 by rimney            #+#    #+#             */
+/*   Updated: 2022/09/29 02:56:49 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "HumanA.hpp"
+#include "Weapon.hpp"
+#include "HumanB.hpp"
 
-void    Zombie::announce(void)
+void    HumanB::set_name(std::string name)
 {
-    std::cout << _name << " : BraiiiiiiinnnzzzZ...\n";
+    this->_Name = name;
 }
 
-
-
-Zombie::Zombie()
+std::string HumanB::get_name(void)
 {
-    std::cout << "Default constructor Called...\n";
+    return (this->_Name);
 }
 
-Zombie::Zombie(std::string name)
+HumanB::HumanB(std::string human) :
+    _Name(human)
+{}
+
+void    HumanB::attack(void)
 {
-    std::cout << "constructor Called...\n";
-    this->_name = name;
+    std::cout << get_name() << " attack with their " << W.get_type() << std::endl;
 }
 
-
-Zombie::~Zombie()
-{
-    std::cout << _name << " died\n";
-}
-
-void    Zombie::ft_set_name(std::string name)
-{
-    this->_name = name;
-}
+void    HumanB::setWeapon(Weapon &W) : W(W) 
+{}

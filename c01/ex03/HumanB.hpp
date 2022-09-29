@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/27 20:28:50 by rimney            #+#    #+#             */
-/*   Updated: 2022/09/28 23:27:45 by rimney           ###   ########.fr       */
+/*   Created: 2022/09/29 00:34:47 by rimney            #+#    #+#             */
+/*   Updated: 2022/09/29 02:55:52 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef HUMAN_B_HPP
+#define HUMAN_B_HPP
+#include <iostream>
+#include "Weapon.hpp"
 
-int main()
+class HumanB
 {
-    Zombie *Z = zombieHorde(5, "rimney");
-    for(int i = 0; i < 5; i++)
-        Z[i].announce();
-     delete [] Z;
-}
+    private :
+        std::string _Name;
+        Weapon &W;
+    public :
+        HumanB(std::string human);
+        void        attack();
+        std::string get_name(void);
+        void        set_name(std::string name);
+        void        setWeapon(Weapon &W);
+};
+
+#endif
