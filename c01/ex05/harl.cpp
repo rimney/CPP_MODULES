@@ -6,11 +6,11 @@
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 16:43:20 by rimney            #+#    #+#             */
-/*   Updated: 2022/10/02 00:49:10 by rimney           ###   ########.fr       */
+/*   Updated: 2022/10/04 09:57:41 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#include "harl.hpp"
 
 void    Harl::debug()
 {
@@ -32,8 +32,30 @@ void    Harl::error()
     std::cout << "This is unacceptable! I want to speak to the manager now.\n";
 }
 
+
+int levell(std::string level)
+{
+    std::string l[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+    int i = 0;
+    while(i < 4)
+    {
+        if(level == l[i])
+            return (i);
+        i++;
+    }
+    std::exit(0); 
+}
+
 void    Harl::complain(std::string level)
 {
-    debug = 0 info = 1 warning = 2 error  = 3;
-    void (Harl::*ptr[4])() = {debug, info, warning, error};
+    
+    int i = 0;
+    void (Harl::*ptrF[4])(void) = {
+       &Harl::debug,
+       &Harl::info,
+       &Harl::warning,
+       &Harl::error
+    };
+    ((this->*ptrF[levell(level)]))();
+    
 }
