@@ -6,7 +6,7 @@
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 00:45:05 by rimney            #+#    #+#             */
-/*   Updated: 2022/09/29 02:47:21 by rimney           ###   ########.fr       */
+/*   Updated: 2022/10/09 14:38:29 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ std::string HumanA::get_name(void)
 }
 
 HumanA::HumanA(std::string human, Weapon &W) :
-    _Name(human), W(W)
-{}
+    W(W)
+{
+    this->_Name = human;
+}
 
 void    HumanA::attack(void)
 {

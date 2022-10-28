@@ -1,23 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/27 20:28:56 by rimney            #+#    #+#             */
-/*   Updated: 2022/10/09 15:34:16 by rimney           ###   ########.fr       */
+/*   Created: 2022/10/28 06:15:40 by rimney            #+#    #+#             */
+/*   Updated: 2022/10/28 07:07:20 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef CLAP_TRAP_H
+#define CLAP_TRAP_H
+#include <iostream>
 
-Zombie* zombieHorde(int N, std::string name)
+class ClapTrap
 {
-    if(N <= 0)
-        std::exit(0);
-    Zombie *Z = new Zombie[N];
-    for(int i = 0; i < N; i++)
-        Z[i].ft_set_name(name);
-    return (Z);
-}
+    private :
+        std::string name;
+        int HP;
+        int EP;
+        int AD;
+    public :
+        ClapTrap();
+        ClapTrap(std::string name);
+        ~ClapTrap();
+        void attack(const std::string &target);
+        void takeDamage(unsigned int amount);
+        void beRepaired(unsigned int amount);      
+};
+
+#endif

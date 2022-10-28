@@ -1,30 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   harl.hpp                                           :+:      :+:    :+:   */
+/*   fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/29 16:43:17 by rimney            #+#    #+#             */
-/*   Updated: 2022/10/09 14:54:30 by rimney           ###   ########.fr       */
+/*   Created: 2022/10/23 18:33:03 by rimney            #+#    #+#             */
+/*   Updated: 2022/10/28 03:33:15 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HARL_HPP
-#define HARL_HPP
-#include <iostream>
+#ifndef FIXED_HPP
+#define FIXED_HPP
 
-class Harl
+#include <iostream>
+#include <math.h>
+
+class Fixed
 {
     private :
-        void    debug(void);
-        void    info(void);
-        void    warning(void);
-        void    error(void);
+        int _fixed;
+        static const int i;
+
     public :
-        Harl();
-        ~Harl();
-        void    complain(std::string level);
+        Fixed();
+        Fixed(const int i);
+        Fixed(const float f);
+        Fixed(const Fixed &F);
+        Fixed  operator=(Fixed const &F);
+        ~Fixed();
+        float   toFloat(void) const;
+        int     toInt(void) const;
+
 };
+
+std::ostream &operator<<(std::ostream& op, const Fixed& o);
 
 #endif

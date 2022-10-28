@@ -6,7 +6,7 @@
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 16:43:23 by rimney            #+#    #+#             */
-/*   Updated: 2022/10/05 14:15:26 by rimney           ###   ########.fr       */
+/*   Updated: 2022/10/09 15:02:42 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ int main(int argc, char **argv)
     if(argc == 2)
     {
         Harl *Harl;
+        Harl = NULL;
         Harl->complain(argv[1]);
     }
     return (0);

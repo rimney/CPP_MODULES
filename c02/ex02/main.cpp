@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/27 20:28:56 by rimney            #+#    #+#             */
-/*   Updated: 2022/10/09 15:34:16 by rimney           ###   ########.fr       */
+/*   Created: 2022/10/23 18:32:53 by rimney            #+#    #+#             */
+/*   Updated: 2022/10/28 03:43:14 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "fixed.hpp"
 
-Zombie* zombieHorde(int N, std::string name)
-{
-    if(N <= 0)
-        std::exit(0);
-    Zombie *Z = new Zombie[N];
-    for(int i = 0; i < N; i++)
-        Z[i].ft_set_name(name);
-    return (Z);
+int main( void ) {
+    Fixed a;
+    Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+    // std::cout << a << std::endl;
+    std::cout << ++a << std::endl;
+    std::cout << a << std::endl;
+   // std::cout << a++ << std::endl;
+    std::cout << a << std::endl;
+    // std::cout << b << std::endl;
+    //std::cout << Fixed::max( a, b ) << std::endl;
+return 0;
 }

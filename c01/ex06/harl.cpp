@@ -6,7 +6,7 @@
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 16:43:20 by rimney            #+#    #+#             */
-/*   Updated: 2022/10/05 15:26:32 by rimney           ###   ########.fr       */
+/*   Updated: 2022/10/09 15:31:40 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,6 @@ void    Harl::complain(std::string level)
        &Harl::warning,
        &Harl::error
     };
-    // std::cout << i << std::endl;
-    // ((this->*ptrF[levell(level)]))();
     switch(i)
     {
         case 0 :

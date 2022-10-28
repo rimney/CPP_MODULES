@@ -6,7 +6,7 @@
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/29 16:43:20 by rimney            #+#    #+#             */
-/*   Updated: 2022/10/04 09:57:41 by rimney           ###   ########.fr       */
+/*   Updated: 2022/10/09 14:59:19 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,6 @@ int levell(std::string level)
 
 void    Harl::complain(std::string level)
 {
-    
-    int i = 0;
     void (Harl::*ptrF[4])(void) = {
        &Harl::debug,
        &Harl::info,
