@@ -1,8 +1,0 @@
-find ```https://en.cppreference.com/w/cpp/algorithm/find```
-erase ```https://en.cppreference.com/w/cpp/container/vector/erase2```
-insert ```https://en.cppreference.com/w/cpp/container/vector/insert```
-
-
-ofstream : ``` this data type represents the output file stream and it is used to create files and to write informations to files ```
-ifstream : ``` this data type represents the input file stream and its used to read informations from files ```
-fstream : ``` this data type represents the file stream in general , and has the capabilities of both ofstream and iftream which make it create and write info to them and read info from them ```

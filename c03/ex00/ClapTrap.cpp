@@ -6,7 +6,7 @@
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 06:20:56 by rimney            #+#    #+#             */
-/*   Updated: 2022/10/28 07:08:10 by rimney           ###   ########.fr       */
+/*   Updated: 2022/10/29 19:58:35 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,13 @@ void    ClapTrap::attack(const std::string &target)
 
 void    ClapTrap::takeDamage(unsigned int amount)
 {
-    if((int)amount > 0)
+    if(HP <= 0)
+        std::cout << name << " is out of HP\n";
+    else if((int)amount > 0)
+    {
         HP -= amount;
-    else
-        std::cout << "ClapTrap : " << name << "lost " << amount << "of HP";
-
+        std::cout << "ClapTrap : " << name << "lost " << amount << "of HP\n";
+    }
 }
 
 void    ClapTrap::beRepaired(unsigned int amount)
