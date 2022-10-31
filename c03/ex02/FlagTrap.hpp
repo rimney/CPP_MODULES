@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FlagTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 18:32:53 by rimney            #+#    #+#             */
-/*   Updated: 2022/10/31 08:16:37 by rimney           ###   ########.fr       */
+/*   Created: 2022/10/30 07:27:24 by rimney            #+#    #+#             */
+/*   Updated: 2022/10/30 07:31:19 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fixed.hpp"
+#ifndef FLAG_TRAP_H
+#define FLAG_TRAP_H
+#include "ClapTrap.hpp"
 
-int main( void ) {
-Fixed a;
-Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-std::cout << a << std::endl;
-std::cout << ++a << std::endl;
-std::cout << a << std::endl;
-std::cout << a++ << std::endl;
-std::cout << a << std::endl;
-std::cout << b << std::endl;
-std::cout << Fixed::max( a, b ) << std::endl;
-return 0;
-}
+
+class FlagTrap : ClapTrap
+{
+    public :
+        FlagTrap(std::string name);
+        void attack(const std::string& target);
+        void highFivesGuys(void);    
+};
+
+#endif

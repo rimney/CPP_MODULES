@@ -1,39 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fixed.hpp                                          :+:      :+:    :+:   */
+/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 18:33:03 by rimney            #+#    #+#             */
-/*   Updated: 2022/10/30 07:35:43 by rimney           ###   ########.fr       */
+/*   Created: 2022/10/28 06:15:40 by rimney            #+#    #+#             */
+/*   Updated: 2022/10/30 07:17:39 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FIXED_HPP
-#define FIXED_HPP
-
+#ifndef CLAP_TRAP_H
+#define CLAP_TRAP_H
 #include <iostream>
-#include <math.h>
 
-class Fixed
+class ClapTrap
 {
-    private :
-        int _fixed;
-        static const int i;
-
+    protected :
+        std::string name;
+        int HP;
+        int EP;
+        int AD;
     public :
-        Fixed();
-        Fixed(const int i);
-        Fixed(const float f);
-        Fixed(const Fixed &F);
-        Fixed & operator=(Fixed const &F);
-        ~Fixed();
-        float   toFloat(void) const;
-        int     toInt(void) const;
-
+        ClapTrap();
+        ClapTrap(std::string name);
+        ~ClapTrap();
+        void attack(const std::string &target);
+        void takeDamage(unsigned int amount);
+        void beRepaired(unsigned int amount);      
 };
-
-std::ostream &operator<<(std::ostream& op, const Fixed& o);
 
 #endif
