@@ -6,16 +6,24 @@
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 20:13:39 by rimney            #+#    #+#             */
-/*   Updated: 2022/10/24 01:59:12 by rimney           ###   ########.fr       */
+/*   Updated: 2022/11/09 18:14:27 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fixed.hpp"
 
+const int Fixed::i = 8;
+
 Fixed::Fixed()
 {
     std::cout << "Default constructor called\n";
-    this->setRawBits(0);
+    _fixed = 0;
+}
+
+Fixed::Fixed(int f)
+{
+    std::cout << "Parametrized constructor called\n";
+    setRawBits(f);
 }
 
 Fixed::Fixed(Fixed &F)

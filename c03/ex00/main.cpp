@@ -6,7 +6,7 @@
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 07:01:33 by rimney            #+#    #+#             */
-/*   Updated: 2022/10/29 19:50:44 by rimney           ###   ########.fr       */
+/*   Updated: 2022/11/11 03:01:57 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 int main()
 {
-    ClapTrap C("EE");
-    C.attack("OWO");
-    C.takeDamage(55);
-    C.takeDamage(55);
-                                
+    ClapTrap C("EE ");
+    ClapTrap F;
+    C.takeDamage(9);
+    C.takeDamage(1);
+
+    C.beRepaired(1);
+    C.takeDamage(1);
     return (0); 
 }

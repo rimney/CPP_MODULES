@@ -6,23 +6,19 @@
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 20:13:39 by rimney            #+#    #+#             */
-/*   Updated: 2022/10/28 03:34:48 by rimney           ###   ########.fr       */
+/*   Updated: 2022/11/09 18:34:02 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fixed.hpp"
 
-
-
+const int Fixed::i = 8;
 
 std::ostream &operator<<(std::ostream& op, const Fixed& o)
 {
     op << o.toFloat();
     return (op);
 }
-
-
-const int Fixed::i=8;
 
 Fixed::Fixed(const int i)
 {
@@ -60,7 +56,7 @@ Fixed & Fixed::operator=(Fixed const &F)
     return *this;
 }
 
-float Fixed::toFloat(void) const
+float Fixed::toFloat(void) const 
 {
     return ((float(_fixed) / (1 << this->i)));
 }

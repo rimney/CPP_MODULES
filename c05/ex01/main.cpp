@@ -5,22 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 18:32:53 by rimney            #+#    #+#             */
-/*   Updated: 2022/11/09 21:22:44 by rimney           ###   ########.fr       */
+/*   Created: 2022/11/17 00:32:24 by rimney            #+#    #+#             */
+/*   Updated: 2022/11/17 00:32:33 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fixed.hpp"
 
-int main( void ) {
-Fixed a;
-Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-std::cout << a << std::endl;
-std::cout << ++a << std::endl;
-std::cout << a << std::endl;
-std::cout << a++ << std::endl;
-std::cout << a << std::endl;
-std::cout << b << std::endl;
-std::cout << Fixed::max( a, b ) << std::endl;
-return 0;
+#include "Bureaucrat.hpp"
+#include "Form.hpp"
+
+int main()
+{
+    try
+    {
+        Form f("form", 1, 1);
+        Bureaucrat b("bureaucrat", 11);
+        b.signForm(f);
+        f.beSigned(b);
+    }
+    catch(std::exception & e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
+    return 0;
 }

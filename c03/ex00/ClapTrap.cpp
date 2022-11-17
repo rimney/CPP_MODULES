@@ -6,7 +6,7 @@
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 06:20:56 by rimney            #+#    #+#             */
-/*   Updated: 2022/10/29 19:58:35 by rimney           ###   ########.fr       */
+/*   Updated: 2022/11/11 02:47:25 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,41 @@
 
 ClapTrap::ClapTrap()
 {
-    std::cout << "Contructor Called\n";
+    std::cout << "ClapTrap Default Contructor Called\n";
+    this->HP = 10;
+    this->EP = 10;
+    this->AD = 0;
+    this->name = "hamid";
 }
 
 ClapTrap::ClapTrap(std::string name)
 {
-    std::cout << "Contructor Called\n";
+    std::cout << "ClapTrap Paramitarized Contructor Called\n";
     this->HP = 10;
     this->EP = 10;
     this->AD = 0;
     this->name = name;
 }
 
+ClapTrap& ClapTrap::operator=(const ClapTrap& C)
+{
+    this->EP = C.EP;
+    this->AD = C.AD;
+    this->HP = C.AD;
+    this->name = C.name;
+    std::cout << "ClapTrap Copy Assignement overload Called\n";
+    return *this;
+}
+
+ClapTrap::ClapTrap(ClapTrap& C)
+{
+    std::cout << "ClapTrap Copy constructor called\n";
+    *this = C;
+}
+
 ClapTrap::~ClapTrap()
 {
-    std::cout << "Destructor Called\n";
+    std::cout << "ClapTrap Destructor Called\n";
 }
 
 void    ClapTrap::attack(const std::string &target)
@@ -46,18 +66,19 @@ void    ClapTrap::attack(const std::string &target)
 void    ClapTrap::takeDamage(unsigned int amount)
 {
     if(HP <= 0)
-        std::cout << name << " is out of HP\n";
-    else if((int)amount > 0)
     {
-        HP -= amount;
-        std::cout << "ClapTrap : " << name << "lost " << amount << "of HP\n";
+        std::cout << name << " is out of HP\n";
+        return ;
     }
+    HP -= amount;
+    std::cout << "ClapTrap : " << name << "lost " << amount << " of HP\n";
 }
 
 void    ClapTrap::beRepaired(unsigned int amount)
 {
-    if(EP > 0 && (int)amount > 0)
+    if(EP > 0)
     {
+        std::cout << "ClapTrap just got repaired\n";
         HP += amount;
         EP -= 1;
     }

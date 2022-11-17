@@ -6,7 +6,7 @@
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 04:13:48 by rimney            #+#    #+#             */
-/*   Updated: 2022/10/30 07:23:42 by rimney           ###   ########.fr       */
+/*   Updated: 2022/11/11 02:31:19 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,11 @@ class ScavTrap : public ClapTrap
 {
     public :
         void    attack(const std::string &target);
+        ScavTrap();
         ScavTrap(std::string name);
+        ScavTrap(ScavTrap & S);
+        ~ScavTrap();
+        ScavTrap & operator=(ScavTrap & C);
         void    guardGate();
-    
 };
 # endif

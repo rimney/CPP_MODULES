@@ -5,22 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/10/23 18:32:53 by rimney            #+#    #+#             */
-/*   Updated: 2022/11/09 21:22:44 by rimney           ###   ########.fr       */
+/*   Created: 2022/11/10 21:26:58 by rimney            #+#    #+#             */
+/*   Updated: 2022/11/11 02:45:12 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fixed.hpp"
+#include "FragTrap.hpp"
 
-int main( void ) {
-Fixed a;
-Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-std::cout << a << std::endl;
-std::cout << ++a << std::endl;
-std::cout << a << std::endl;
-std::cout << a++ << std::endl;
-std::cout << a << std::endl;
-std::cout << b << std::endl;
-std::cout << Fixed::max( a, b ) << std::endl;
-return 0;
+int main()
+{
+    FragTrap f("MELLO");
+    f.attack("Andrew");
+    f.highFivesGuys();
 }

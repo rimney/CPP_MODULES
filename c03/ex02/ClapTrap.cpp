@@ -6,7 +6,7 @@
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/28 06:20:56 by rimney            #+#    #+#             */
-/*   Updated: 2022/10/30 07:27:44 by rimney           ###   ########.fr       */
+/*   Updated: 2022/11/11 02:57:05 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 ClapTrap::ClapTrap()
 {
-    std::cout << "Contructor Called\n";
+    std::cout << "ClavTrap Default Contructor Called\n";
 }
 
-ClapTrap::ClapTrap(std::string name)
+ClapTrap::ClapTrap(std::string name) 
 {
-    std::cout << "Contructor Called\n";
+    std::cout << "ClapTrap Paramitarized Contructor Called\n";
     this->HP = 100;
     this->EP = 100;
     this->AD = 30;
@@ -28,7 +28,16 @@ ClapTrap::ClapTrap(std::string name)
 
 ClapTrap::~ClapTrap()
 {
-    std::cout << "Destructor Called\n";
+    std::cout << "ClapTrap Destructor Called\n";
+}
+
+ClapTrap & ClapTrap::operator=(ClapTrap const C)
+{
+    this->EP = C.EP;
+    this->AD = C.AD;
+    this->HP = C.AD;
+    std::cout << "Copy Assignement overload Called\n";
+    return *this;
 }
 
 void    ClapTrap::attack(const std::string &target)
@@ -40,23 +49,29 @@ void    ClapTrap::attack(const std::string &target)
 
     }
     else
-        std::cout << "ClapTrap : No more energy points !\n";
+        std::cout << "No more energy points !\n";
+}
+
+ClapTrap::ClapTrap(ClapTrap & C)
+{
+    std::cout << "Copy constructor called\n";
+    *this = C;
 }
 
 void    ClapTrap::takeDamage(unsigned int amount)
 {
     if(HP <= 0)
         std::cout << name << " is out of HP\n";
-    else if((int)amount > 0)
+    else
     {
         HP -= amount;
-        std::cout << "ClapTrap : " << name << "lost " << amount << "of HP\n";
+        std::cout << "" << name << "lost " << amount << "of HP\n";
     }
 }
 
 void    ClapTrap::beRepaired(unsigned int amount)
 {
-    if(EP > 0 && (int)amount > 0)
+    if(EP > 0)
     {
         HP += amount;
         EP -= 1;

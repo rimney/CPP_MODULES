@@ -5,17 +5,17 @@
 #                                                     +:+ +:+         +:+      #
 #    By: rimney <rimney@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/11/09 17:17:16 by rimney            #+#    #+#              #
-#    Updated: 2022/11/09 17:24:44 by rimney           ###   ########.fr        #
+#    Created: 2022/11/10 21:24:55 by rimney            #+#    #+#              #
+#    Updated: 2022/11/10 21:25:17 by rimney           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Now_Were_Talking
-SRCS = fixed.cpp main.cpp
-FLAGS = -Wall -Wextra -Werror  -std=c++98
+NAME = ScavTrap
+SRCS = ClapTrap.cpp main.cpp ScavTrap.cpp
+FLAGS = -Wall -Wextra -Werror -std=c++98
 
 all :
-	c++ $(FLAGS) $(SRCS) -o $(NAME)	
+	c++ $(FLAGS) $(SRCS) -o $(NAME)
 clean :
 	rm -f $(NAME)
 fclean :

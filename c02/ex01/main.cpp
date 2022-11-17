@@ -6,7 +6,7 @@
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 18:32:53 by rimney            #+#    #+#             */
-/*   Updated: 2022/10/24 21:35:27 by rimney           ###   ########.fr       */
+/*   Updated: 2022/11/09 18:25:24 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ Fixed a;
 Fixed const b( 10 );
 Fixed const c( 42.42f );
 Fixed const d( b );
+
 a = Fixed( 1234.4321f );
 std::cout << "a is " << a << std::endl;
 std::cout << "b is " << b << std::endl;
