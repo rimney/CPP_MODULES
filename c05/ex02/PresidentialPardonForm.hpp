@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/17 00:32:24 by rimney            #+#    #+#             */
-/*   Updated: 2022/11/17 23:38:32 by rimney           ###   ########.fr       */
+/*   Created: 2022/11/18 01:33:31 by rimney            #+#    #+#             */
+/*   Updated: 2022/11/18 03:22:30 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include "Bureaucrat.hpp"
+#ifndef PRESIDENTIAL_FORM_HPP
+# define PRESIDENTIAL_FORM_HPP
 #include "Form.hpp"
+#include "Bureaucrat.hpp"
 
-int main()
+class PresidentialPardonForm : public Form
 {
-    try
-    {
-        Form f("form", 150, 150);
-        Bureaucrat b("bureaucrat", 11);
-        std::cout << b;
-        b.signForm(f);
-        f.beSigned(b);
-    }
-    catch(std::exception & e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    
-    return 0;
-}
+    private :
+        std::string target;
+    public : 
+        PresidentialPardonForm();
+        PresidentialPardonForm(std::string target);
+        ~PresidentialPardonForm();
+        std::string getTarget(void) const ;
+        void    setTarget(std::string T);
+        
+};
+
+#endif

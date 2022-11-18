@@ -6,7 +6,7 @@
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 23:51:49 by rimney            #+#    #+#             */
-/*   Updated: 2022/11/18 03:40:24 by rimney           ###   ########.fr       */
+/*   Updated: 2022/11/18 03:40:44 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,19 @@ int Form::getSGrade(void)
     return (this->sign_grade);
 }
 
-std::string Form::getName(void)
+std::string Form::getName(void) const
 {
     return (this->name);
+}
+
+void    Form::execute(Bureaucrat const & executor) const 
+{
+    if(executor.getGrade() < 1)
+        throw(GradeTooHighException());
+    else if(executor.getGrade() > 150)
+        throw(GradeTooLowException());
+    if (is_signed)
+        std::cout << "Form : " << this->name << " executed " << executor.getName() << '\n';
+    else
+        std::cout << "Form : The form is not signed\n";
 }
