@@ -6,7 +6,7 @@
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 23:51:49 by rimney            #+#    #+#             */
-/*   Updated: 2022/11/18 03:40:44 by rimney           ###   ########.fr       */
+/*   Updated: 2022/11/23 23:36:35 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void    Form::beSigned(Bureaucrat B)
 {
     if(sign_grade < 1 || execute_grade < 1)
         throw(GradeTooHighException());
-    else if (sign_grade > 150 || execute_grade > 1)
+    else if (sign_grade > 150 || execute_grade > 150)
         throw(GradeTooLowException());
     if(B.getGrade() < 1)
         throw(GradeTooHighException());

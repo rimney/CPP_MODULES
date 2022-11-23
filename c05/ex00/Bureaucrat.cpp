@@ -6,7 +6,7 @@
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 19:07:22 by rimney            #+#    #+#             */
-/*   Updated: 2022/11/16 17:22:51 by rimney           ###   ########.fr       */
+/*   Updated: 2022/11/24 00:02:10 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@ std::ostream & operator<<(std::ostream & op, const Bureaucrat & B)
 Bureaucrat::Bureaucrat() : name("Bureaucrat")
 {
     std::cout << "Bureaucrat Default constructor called\n";
-    this->grade = 0;
+    this->grade = 150;
 }
 
 Bureaucrat::Bureaucrat(const std::string name) : name(name)
 {
     std::cout << "Bureaucrat Paramitrized Constructor Called\n";
-    this->grade = 0;
+    this->grade = 150;
 }
 
-Bureaucrat::Bureaucrat(int grade)
+Bureaucrat::Bureaucrat(int grade) : name("laarbi")
 {
     if (grade < 1)
         throw(Bureaucrat::GradeTooHighException());
@@ -78,19 +78,15 @@ std::string Bureaucrat::getName(void) const
 void    Bureaucrat::incrementBureaucrat(void)
 {
 
+    this->grade -= 1;
     if (grade  < 1)
         throw(Bureaucrat::GradeTooHighException());
-    else if (grade > 150)
-        throw(Bureaucrat::GradeTooLowException());
-    this->grade -= 1; // must set expeptions
 }
 
 void    Bureaucrat::decrementBureaucrat(void)
 {
-    this->grade += 1; // must set expeptions
-    if (grade < 1)
-        throw(Bureaucrat::GradeTooHighException());
-    else if (grade > 150)
+    this->grade += 1;
+    if (grade > 150)
         throw(Bureaucrat::GradeTooLowException());
 }
 

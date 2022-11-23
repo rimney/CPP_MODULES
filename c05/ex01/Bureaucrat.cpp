@@ -6,7 +6,7 @@
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 19:07:22 by rimney            #+#    #+#             */
-/*   Updated: 2022/11/17 00:31:24 by rimney           ###   ########.fr       */
+/*   Updated: 2022/11/24 00:11:17 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,17 @@ int Bureaucrat::getGrade(void) const
 std::string Bureaucrat::getName(void) const 
 {
     return (this->name);
+}
+
+
+const char * Bureaucrat::GradeTooHighException::what() const throw () // <--- This
+{
+    return "Error : Grade is High";
+}
+
+const char * Bureaucrat::GradeTooLowException::what() const throw () // <--- This
+{
+    return "Error : Grade is Low";
 }
 
 void    Bureaucrat::incrementBureaucrat(void)

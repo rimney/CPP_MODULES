@@ -6,7 +6,7 @@
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:20:48 by rimney            #+#    #+#             */
-/*   Updated: 2022/11/17 00:39:30 by rimney           ###   ########.fr       */
+/*   Updated: 2022/11/24 00:05:20 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,11 @@ class Bureaucrat
         void    incrementBureaucrat(void);
         void    decrementBureaucrat(void);
         class   GradeTooHighException : public std::exception
-        {
-            public :
-                const char * what() const throw () // <--- This
-            {
-                return "Error : Grade is High";
-            }
-        };
+        {public :
+                const char * what() const throw ();};
         class   GradeTooLowException : public std::exception
-        {
-            public :
-                const char * what() const throw () // <--- This
-            {
-                return "Error : Grade is Low";
-            }
-        };
+        { public :
+                const char * what() const throw ();};
         void    signForm(Form & F);
         
 };

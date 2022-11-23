@@ -6,7 +6,7 @@
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 01:33:31 by rimney            #+#    #+#             */
-/*   Updated: 2022/11/18 03:22:30 by rimney           ###   ########.fr       */
+/*   Updated: 2022/11/23 23:26:17 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ class PresidentialPardonForm : public Form
         std::string target;
     public : 
         PresidentialPardonForm();
+PresidentialPardonForm(std::string name, const int sign_grade, const int execute_grade);
         PresidentialPardonForm(std::string target);
         ~PresidentialPardonForm();
         std::string getTarget(void) const ;
