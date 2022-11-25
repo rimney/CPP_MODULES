@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/24 23:15:46 by rimney            #+#    #+#             */
-/*   Updated: 2022/11/24 23:16:34 by rimney           ###   ########.fr       */
+/*   Created: 2022/11/18 01:33:31 by rimney            #+#    #+#             */
+/*   Updated: 2022/11/24 00:24:53 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ROBOTOMYREQUESTFORM_HPP
-# define ROBOTOMYREQUESTFORM_HPP
+#ifndef SHRUBERRYCREATIONFORM_HPP
+# define SHRUBERRYCREATIONFORM_HPP
 #include "Form.hpp"
 #include "Bureaucrat.hpp"
 
-class RobotomyRequestForm : public Form
+class ShrubberyCreationForm : public Form
 {
     private :
         std::string target;
     public : 
-        RobotomyRequestForm();
-        RobotomyRequestForm(std::string name, const int sign_grade, const int execute_grade);
-        RobotomyRequestForm(std::string target);
-        ~RobotomyRequestForm();
+        ShrubberyCreationForm();
+        ShrubberyCreationForm(std::string name, const int sign_grade, const int execute_grade);
+        ShrubberyCreationForm(std::string target);
+        ~ShrubberyCreationForm();
         std::string getTarget(void) const ;
         void    setTarget(std::string T);
-        
+        void    drawTree(std::string target);
 };
 
 #endif
