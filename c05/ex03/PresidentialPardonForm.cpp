@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PresidentialPardonForm.cpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rimney < rimney@student.1337.ma>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/18 03:22:37 by rimney            #+#    #+#             */
-/*   Updated: 2022/11/23 23:47:10 by rimney           ###   ########.fr       */
+/*   Updated: 2022/11/25 18:45:45 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,22 @@
 PresidentialPardonForm::PresidentialPardonForm() : target("Target")
 {
     std::cout << "PresidentialPardonForm Default Constructor Called\n";
-    if(this->getSGrade() > 25 || this->getEGrade() > 5)
-        throw(GradeTooLowException());
+    // if(this->getSGrade() > 25 || this->getEGrade() > 5)
+    //     throw(GradeTooLowException());
     std::cout << getTarget() << " has been pardoned by Zaphod Beeblebrox\n";
 }
 PresidentialPardonForm::PresidentialPardonForm(std::string name, const int sign_grade, const int execute_grade) : Form(name, sign_grade, execute_grade)
 {
     std::cout << "PresidentialPardonForm Paramitrized Constructor Called\n";
-    if(this->getSGrade() > 25 || this->getEGrade() > 5)
-        throw(GradeTooLowException());
+    // if(this->getSGrade() > 25 || this->getEGrade() > 5)
+    //     throw(GradeTooLowException());
     std::cout << getTarget() << " has been pardoned by Zaphod Beeblebrox\n";
 }
 
 PresidentialPardonForm::PresidentialPardonForm(std::string target) : target(target)
 {
-    if(this->getSGrade() > 25 || this->getEGrade() > 5)
-        throw(GradeTooLowException());
+    // if(this->getSGrade() > 25 || this->getEGrade() > 5)
+    //     throw(GradeTooLowException());
     std::cout << getTarget() << "has been pardoned by Zaphod Beeblebrox\n";
 }
 

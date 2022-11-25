@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intern.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rimney < rimney@student.1337.ma>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 03:03:11 by rimney            #+#    #+#             */
-/*   Updated: 2022/11/25 03:30:23 by rimney           ###   ########.fr       */
+/*   Updated: 2022/11/25 18:24:53 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,22 @@
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include "Form.hpp"
+
+Intern::Intern()
+{
+    std::cout << "Intern Default Constuctor Called\n";
+}
+
+Intern::Intern(Intern const & I)
+{
+    *this = I;
+    std::cout << "Intern Copy Constuctor Called\n";
+}
+
+Intern::~Intern()
+{
+    std::cout << "Intern Destructor Called\n";
+}
 
 Form* Intern::makeForm(std::string nameForm, std::string target)
 {
@@ -44,5 +60,5 @@ Form* Intern::makeForm(std::string nameForm, std::string target)
             return (new PresidentialPardonForm());
         }
     }
-    throw("gi");
+    throw(errorForm());
 }

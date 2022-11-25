@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   Form.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rimney < rimney@student.1337.ma>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 23:51:49 by rimney            #+#    #+#             */
-/*   Updated: 2022/11/23 23:36:35 by rimney           ###   ########.fr       */
+/*   Updated: 2022/11/25 18:43:28 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Form.hpp"
 
-Form::Form() : name("Laaebi"), is_signed(false), sign_grade(149), execute_grade(2)
+Form::Form() : name("Laaebi"), is_signed(false), sign_grade(50), execute_grade(50)
 {
     std::cout << "Form Default constructor Called\n";
 }
@@ -45,13 +45,25 @@ Form::~Form()
 void    Form::beSigned(Bureaucrat B)
 {
     if(sign_grade < 1 || execute_grade < 1)
+    {
+        std::cout << "EEEEEE\n";
         throw(GradeTooHighException());
+    }
     else if (sign_grade > 150 || execute_grade > 150)
+    {
+        std::cout << "EEEEEE\n";
         throw(GradeTooLowException());
+    }
     if(B.getGrade() < 1)
+    {
+        std::cout << "EEEEEE\n";
         throw(GradeTooHighException());
+    }
     else if (B.getGrade() > 150)
+    {
+        std::cout << "EEEEEE\n";
         throw(GradeTooLowException());
+    }
 
 
     this->is_signed = true;
@@ -75,9 +87,15 @@ std::string Form::getName(void) const
 void    Form::execute(Bureaucrat const & executor) const 
 {
     if(executor.getGrade() < 1)
+    {
+        std::cout << "EEEEEE\n";
         throw(GradeTooHighException());
+    }
     else if(executor.getGrade() > 150)
+    {
+        std::cout << "EEEEEE\n";
         throw(GradeTooLowException());
+    }
     if (is_signed)
         std::cout << "Form : " << this->name << " executed " << executor.getName() << '\n';
     else
