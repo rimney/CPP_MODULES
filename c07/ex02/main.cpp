@@ -5,19 +5,16 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rimney < rimney@student.1337.ma>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/06 07:00:41 by rimney            #+#    #+#             */
-/*   Updated: 2022/12/06 07:01:27 by rimney           ###   ########.fr       */
+/*   Created: 2022/12/06 07:38:40 by rimney            #+#    #+#             */
+/*   Updated: 2022/12/06 07:39:17 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include <iostream>
-#include <cstdlib>
 #include "array.hpp"
 
-#define MAX_VAL 7
-
-int main()
+#define MAX_VAL 750
+int main(int, char**)
 {
     Array<int> numbers(MAX_VAL);
     int* mirror = new int[MAX_VAL];
@@ -63,8 +60,6 @@ int main()
     {
         numbers[i] = rand();
     }
-    
     delete [] mirror;//
-    // system("leaks array");
     return 0;
 }
