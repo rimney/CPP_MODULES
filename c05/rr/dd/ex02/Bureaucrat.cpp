@@ -6,7 +6,7 @@
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 19:07:22 by rimney            #+#    #+#             */
-/*   Updated: 2022/11/24 00:11:17 by rimney           ###   ########.fr       */
+/*   Updated: 2022/11/23 23:56:19 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,21 @@ std::ostream & operator<<(std::ostream & op, const Bureaucrat & B)
 Bureaucrat::Bureaucrat() : name("Bureaucrat")
 {
     std::cout << "Bureaucrat Default constructor called\n";
-    this->grade = 0;
+    this->grade = 150;
 }
 
 Bureaucrat::Bureaucrat(const std::string name) : name(name)
 {
     std::cout << "Bureaucrat Paramitrized Constructor Called\n";
-    this->grade = 0;
+    this->grade = 150;
 }
 
-Bureaucrat::Bureaucrat(int grade)
+Bureaucrat::Bureaucrat(int grade) : name("hamid")
 {
     if (grade < 1)
-        throw(Bureaucrat::GradeTooHighException());
+        throw(GradeTooHighException());
     else if (grade > 150)
-        throw(Bureaucrat::GradeTooLowException());
+        throw(GradeTooLowException());
     std::cout << "Bureaucrat Int Constuctor Called\n";
     this->grade = grade;
 }
@@ -75,33 +75,18 @@ std::string Bureaucrat::getName(void) const
     return (this->name);
 }
 
-
-const char * Bureaucrat::GradeTooHighException::what() const throw () // <--- This
-{
-    return "Error : Grade is High";
-}
-
-const char * Bureaucrat::GradeTooLowException::what() const throw () // <--- This
-{
-    return "Error : Grade is Low";
-}
-
 void    Bureaucrat::incrementBureaucrat(void)
 {
 
+    this->grade -= 1; // must set expeptions
     if (grade  < 1)
         throw(Bureaucrat::GradeTooHighException());
-    else if (grade > 150)
-        throw(Bureaucrat::GradeTooLowException());
-    this->grade -= 1; // must set expeptions
 }
 
 void    Bureaucrat::decrementBureaucrat(void)
 {
     this->grade += 1; // must set expeptions
-    if (grade < 1)
-        throw(Bureaucrat::GradeTooHighException());
-    else if (grade > 150)
+    if (grade > 150)
         throw(Bureaucrat::GradeTooLowException());
 }
 
@@ -111,7 +96,7 @@ void    Bureaucrat::decrementBureaucrat(void)
     std::cout << "copy constructor called\n";
  }
 
- Bureaucrat & Bureaucrat::operator=(const Bureaucrat &B)
+Bureaucrat & Bureaucrat::operator=(const Bureaucrat &B)
 {
     this->grade = B.grade;
     std::cout << "Copy assigment overload called\n";
@@ -130,4 +115,13 @@ void   Bureaucrat::signForm(Form & F)
         std::cerr << this->name << "Couldn't Sign due to ";
         std::cerr << e.what() << '\n';
    }    
+}
+
+void    Bureaucrat::executeForm(Form const & form)
+{
+    if (grade  < 1)
+        throw(Bureaucrat::GradeTooHighException());
+    else if (grade > 150)
+        throw(Bureaucrat::GradeTooLowException());
+    std::cout << this->getName() << " executed " << form.getName() << '\n';
 }
