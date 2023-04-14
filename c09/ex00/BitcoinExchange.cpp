@@ -6,18 +6,16 @@
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 01:55:48 by rimney            #+#    #+#             */
-/*   Updated: 2023/04/14 02:10:27 by rimney           ###   ########.fr       */
+/*   Updated: 2023/04/14 05:43:58 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
 
-int     bitcoinExchange::dateToInt(std::string date)
+bool     bitcoinExchange::checkDash(std::string date)
 {
-    size_t ret = 0;
 	int count = 0;
-	std::string buffer;
     
 	for(int i = 0; i < date.size(); i++)
     {
@@ -25,18 +23,13 @@ int     bitcoinExchange::dateToInt(std::string date)
 		{
 			count++;
 			if(count > 2)
-			{
-				std::cerr << "Error : Extra dash ==> " << date << std::endl;
-				exit(1);
-			}
-			if(i + 1 < date.size())
-				i++;
+				return (false);
 		}
-		buffer += date[i];
 		
     }
-	return (atoi(buffer.c_str()));
+	return (true);
 }
+
 
 std::string* split_string(std::string str, char delimiter, int *size)
 {
@@ -45,7 +38,8 @@ std::string* split_string(std::string str, char delimiter, int *size)
     size_t pos = 0;
     int i = 0;
 
-    while ((pos = str.find(delimiter)) != std::string::npos) {
+    while ((pos = str.find(delimiter)) != std::string::npos)
+	{
         token = str.substr(0, pos);
         tokens[i] = token;
         str.erase(0, pos + 1);
@@ -56,6 +50,8 @@ std::string* split_string(std::string str, char delimiter, int *size)
 	*size = i + 1;
     return tokens;
 }
+
+
 
 void    bitcoinExchange::assignCsvToMap(std::string line)
 {
@@ -73,18 +69,37 @@ void    bitcoinExchange::assignCsvToMap(std::string line)
 		delete [] temp;
 }
 
-bool date_compare(const std::string& a, const std::string& b) {
-    return a < b;
+bool	date_is_correct(std::string date)
+{
+	int size = 0;
+	std::string *temp = split_string(date, '-', &size);
+	// for(int i = 0; i < size; i++)
+	// 	std::cout << temp[i] << " <<\n";
+	if(size < 3)
+		return (false);
+	if(atoi(temp[0].c_str()) < 2009 || atoi(temp[0].c_str()) > 2022)
+		return (false);
+	if(atoi(temp[1].c_str()) < 0 || atoi(temp[1].c_str()) > 12)
+		return (false);
+	if(atoi(temp[2].c_str()) < 0 || atoi(temp[2].c_str()) > 31)
+		return (false);
+	if(atoi(temp[1].c_str()) == 2 && atoi(temp[2].c_str()) > 27)
+		return (false);
+	return (true);
 }
 
 void	bitcoinExchange::process(std::string line)
 {
 	std::string *temp;
 	int size = 0;
-	
+	int count = 0;
+
 	temp = split_string(line, '|', &size);
-	if(size == 1 || size > 2)
+	if(size == 1 || size > 2 || !date_is_correct(temp[0]) || !checkDash(temp[0]))
+	{
 		std::cerr << "Error : bad input =>> "  << line << std::endl;
+		return ;
+	}
 	else if(stoll(temp[1]) < 0 || stoll(temp[1]) > INT32_MAX)
 	{
 		if(stoll(temp[1]) < 0)
@@ -100,14 +115,25 @@ void	bitcoinExchange::process(std::string line)
 	}
 	if(temp[0].back() == ' ')
 		temp[0].erase(temp[0].size() - 1);
+	for(size_t i = 0; i < temp[1].size(); i++)
+	{
+		if (temp[1][i] == ',' || temp[1][i] == '.')
+		{
+			temp[1][i] = '.';
+			count += 1;				
+		}
+		if (count > 1)
+		{
+			std::cerr << "Error : bad input => " << line << std::endl;
+			return ;
+		}
+	}
 	std::map<std::string, double>::iterator i = dateRate.lower_bound(temp[0]);
 	// std::map<std::string, double>::iterator i = dateRate.find(temp[0]);
 	if(i != dateRate.end())
 	{
 		std::cout << (*i).first << " => " << atof(temp[1].c_str()) <<  " = " << (*i).second * atof(temp[1].c_str()) << std::endl; 
-	}
-		
-			
+	}		
 	delete [] temp;
 }
 
