@@ -6,12 +6,26 @@
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 01:55:48 by rimney            #+#    #+#             */
-/*   Updated: 2023/04/14 05:46:48 by rimney           ###   ########.fr       */
+/*   Updated: 2023/04/14 07:46:47 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
+
+bool is_all_digits(std::string temp)
+{
+	if(!temp.size())
+		return (false);
+	for(size_t i = 0; i < temp.size(); i++)
+    {
+		if(temp[i] == '-')
+			continue ;
+        if(!isdigit(temp[i]))
+            return (false);
+    }
+    return (true);
+}
 
 bool     bitcoinExchange::checkDash(std::string date)
 {
@@ -45,7 +59,8 @@ std::string* split_string(std::string str, char delimiter, int *size)
         str.erase(0, pos + 1);
         i++;
     }
-
+	str.erase(0, str.find_first_not_of(" \t"));
+    str.erase(str.find_last_not_of(" \t") + 1);
     tokens[i] = str;
 	*size = i + 1;
     return tokens;
@@ -95,7 +110,7 @@ void	bitcoinExchange::process(std::string line)
 	int count = 0;
 
 	temp = split_string(line, '|', &size);
-	if(size == 1 || size > 2 || !date_is_correct(temp[0]) || !checkDash(temp[0]))
+	if(size == 1 || size > 2 || !date_is_correct(temp[0]) || !checkDash(temp[0]) || !is_all_digits(temp[1]))
 	{
 		std::cerr << "Error : bad input => "  << line << std::endl;
 		return ;
