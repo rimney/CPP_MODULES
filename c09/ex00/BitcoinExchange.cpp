@@ -6,7 +6,7 @@
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 01:55:48 by rimney            #+#    #+#             */
-/*   Updated: 2023/04/14 05:43:58 by rimney           ###   ########.fr       */
+/*   Updated: 2023/04/14 05:46:48 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	bitcoinExchange::process(std::string line)
 	temp = split_string(line, '|', &size);
 	if(size == 1 || size > 2 || !date_is_correct(temp[0]) || !checkDash(temp[0]))
 	{
-		std::cerr << "Error : bad input =>> "  << line << std::endl;
+		std::cerr << "Error : bad input => "  << line << std::endl;
 		return ;
 	}
 	else if(stoll(temp[1]) < 0 || stoll(temp[1]) > INT32_MAX)
