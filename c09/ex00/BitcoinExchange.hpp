@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rimney < rimney@student.1337.ma>           +#+  +:+       +#+        */
+/*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 01:28:50 by rimney            #+#    #+#             */
-/*   Updated: 2023/04/07 04:44:54 by rimney           ###   ########.fr       */
+/*   Updated: 2023/04/14 01:51:45 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,11 @@
 #include <iostream>
 #include <map>
 #include <algorithm>
-
 #include <fstream>
 
 class bitcoinExchange
 {
     private :
-        int minDate;
-        int maxDate;
         std::map<std::string, double> dateRate;
     public :
         

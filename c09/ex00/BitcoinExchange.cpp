@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rimney < rimney@student.1337.ma>           +#+  +:+       +#+        */
+/*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 01:55:48 by rimney            #+#    #+#             */
-/*   Updated: 2023/04/07 16:11:34 by rimney           ###   ########.fr       */
+/*   Updated: 2023/04/14 02:10:27 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,9 @@ void    bitcoinExchange::assignCsvToMap(std::string line)
 		delete [] temp;
 }
 
+bool date_compare(const std::string& a, const std::string& b) {
+    return a < b;
+}
 
 void	bitcoinExchange::process(std::string line)
 {
@@ -81,23 +84,28 @@ void	bitcoinExchange::process(std::string line)
 	
 	temp = split_string(line, '|', &size);
 	if(size == 1 || size > 2)
-		std::cerr << "Error : bad input => "  << line << std::endl;
+		std::cerr << "Error : bad input =>> "  << line << std::endl;
 	else if(stoll(temp[1]) < 0 || stoll(temp[1]) > INT32_MAX)
 	{
 		if(stoll(temp[1]) < 0)
+		{
 			std::cerr << "Error : not a positive integer\n";
+			return ;
+		}
 		else
+		{
 			std::cerr << "Error : too large a number\n";
+			return ;
+		}
 	}
 	if(temp[0].back() == ' ')
 		temp[0].erase(temp[0].size() - 1);
-	std::map<std::string, double>::iterator i = dateRate.find(temp[0]);
+	std::map<std::string, double>::iterator i = dateRate.lower_bound(temp[0]);
+	// std::map<std::string, double>::iterator i = dateRate.find(temp[0]);
 	if(i != dateRate.end())
 	{
 		std::cout << (*i).first << " => " << atof(temp[1].c_str()) <<  " = " << (*i).second * atof(temp[1].c_str()) << std::endl; 
 	}
-	else
-		std::cerr << "Error : bad input => "  << temp[0] << std::endl;
 		
 			
 	delete [] temp;
@@ -140,7 +148,7 @@ bitcoinExchange::bitcoinExchange(std::string path)
 	std::string line;
 	std::string dateKey;
 	
-	if(!buf || strcmp(buf, ".txt") || file.bad())
+	if(file.bad())
 	{
 		std::cerr << "Error : Cannot Open or Can't fine the File !";
 		exit(1);
