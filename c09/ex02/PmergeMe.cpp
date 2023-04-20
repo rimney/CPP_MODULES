@@ -6,7 +6,7 @@
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 19:18:00 by rimney            #+#    #+#             */
-/*   Updated: 2023/04/20 02:08:14 by rimney           ###   ########.fr       */
+/*   Updated: 2023/04/20 02:44:34 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,11 @@ double mySort(ForwardIterator first, ForwardIterator last)
     return (result);
 }
 
-template <class BidirectionalIterator>
-void checkDuplicates(BidirectionalIterator first, BidirectionalIterator last)
+void checkDuplicatesvVector(std::vector<int>::iterator first, std::vector<int>::iterator last)
 {
     while(first < last - 1)
     {
-        BidirectionalIterator temp = first + 1;
+        std::vector<int>::iterator  temp = first + 1;
         while(temp < last)
         {
             if(*first == *temp)
@@ -74,6 +73,25 @@ void checkDuplicates(BidirectionalIterator first, BidirectionalIterator last)
         first++;
     }
 }
+
+void checkDuplicatesDeque(std::deque<int>::iterator first, std::deque<int>::iterator last)
+{
+    while(first < last - 1)
+    {
+        std::deque<int>::iterator  temp = first + 1;
+        while(temp < last)
+        {
+            if(*first == *temp)
+            {
+                std::cerr << "Error: Duplicate Input\n";
+                exit(1);
+            }
+            temp++;
+        }
+        first++;
+    }
+}
+
 
 
 bool is_all_digits(std::string temp)

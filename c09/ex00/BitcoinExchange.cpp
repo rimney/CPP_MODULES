@@ -6,7 +6,7 @@
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 01:55:48 by rimney            #+#    #+#             */
-/*   Updated: 2023/04/14 07:46:47 by rimney           ###   ########.fr       */
+/*   Updated: 2023/04/20 03:36:06 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ bool	date_is_correct(std::string date)
 	// 	std::cout << temp[i] << " <<\n";
 	if(size < 3)
 		return (false);
-	if(atoi(temp[0].c_str()) < 2009 || atoi(temp[0].c_str()) > 2022)
+	if(atoi(temp[0].c_str()) < 2009)
 		return (false);
 	if(atoi(temp[1].c_str()) < 0 || atoi(temp[1].c_str()) > 12)
 		return (false);
@@ -148,7 +148,17 @@ void	bitcoinExchange::process(std::string line)
 	if(i != dateRate.end())
 	{
 		std::cout << (*i).first << " => " << atof(temp[1].c_str()) <<  " = " << (*i).second * atof(temp[1].c_str()) << std::endl; 
-	}		
+	}
+	else
+	{
+		i--;
+		// std::map<std::string, double>::iterator i = dateRate.lower_bound(temp[0]);
+		// // std::map<std::string, double>::iterator i = dateRate.find(temp[0]);
+		if(i != dateRate.end())
+		{
+			std::cout << (*i).first << " => " << atof(temp[1].c_str()) <<  " = " << (*i).second * atof(temp[1].c_str()) << std::endl; 
+		}
+	}
 	delete [] temp;
 }
 
