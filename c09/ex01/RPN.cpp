@@ -6,7 +6,7 @@
 /*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 16:23:30 by rimney            #+#    #+#             */
-/*   Updated: 2023/04/14 09:34:33 by rimney           ###   ########.fr       */
+/*   Updated: 2023/04/20 01:53:58 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,21 +28,21 @@ RPN::RPN(std::string line)
 			this->s.push(line[i] - '0');
 		else if(line[i] == '/'|| line[i] == '+' || line[i] == '-' || line[i] == '*')
 		{
-			if(this->s.size() != 2)
-			{
-				std::cerr << "Error\n";
-				exit(1);
-			}
+			// if(this->s.size() != 2)
+			// {
+			// 	std::cerr << "Error\n";
+			// 	exit(1);
+			// }
 			int a;
 			int b;
 
 			b = this->s.top();
 			this->s.pop();
-			// if(this->s.size())
-			// {
+			if(this->s.size())
+			{
 				a = this->s.top();
 				this->s.pop();
-			// }
+			}
 			if(line[i] == '+')
 				res = a + b;
 			else if(line[i] == '-')
