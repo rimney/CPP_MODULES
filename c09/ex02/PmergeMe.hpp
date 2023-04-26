@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rimney < rimney@student.1337.ma>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/07 19:12:44 by rimney            #+#    #+#             */
-/*   Updated: 2023/04/20 02:51:37 by rimney           ###   ########.fr       */
+/*   Updated: 2023/04/26 11:34:15 by rimney           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PMERGEME_HPP
 #include <iostream>
 #include <deque>
+#include <string>
 #include <vector>
 
 class PmergeMe
@@ -22,7 +23,9 @@ class PmergeMe
         std::deque<int> Deque;
         std::vector<int> Vector;
     public :
-        PmergeMe(std::string line);
+        PmergeMe(std::vector<std::string> buffer);
+
+
         
 };
 
