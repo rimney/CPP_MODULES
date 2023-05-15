@@ -1,12 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   polymorph.hpp                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/15 12:30:58 by rimney            #+#    #+#             */
+/*   Updated: 2023/05/15 12:32:50 by rimney           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #pragma once
-
 #include "ASpell.hpp"
+class ASpell;
 
-class Polymorph: public ASpell
+class Polymorph : public ASpell
 {
-    public:
+    public :
         Polymorph();
         ~Polymorph();
-
-        virtual ASpell *clone() const;
+        virtual ASpell * clone() const;
 };

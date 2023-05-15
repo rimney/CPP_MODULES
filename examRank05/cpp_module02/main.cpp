@@ -1,10 +1,25 @@
-#include "Warlock.hpp"
-#include "Fwoosh.hpp"
-#include "Dummy.hpp"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.cpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rimney <rimney@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/15 13:57:35 by rimney            #+#    #+#             */
+/*   Updated: 2023/05/15 13:58:28 by rimney           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "ASpell.hpp"
+#include "ATarget.hpp"
 #include "BrickWall.hpp"
-#include "Polymorph.hpp"
-#include "TargetGenerator.hpp"
+#include "Dummy.hpp"
 #include "Fireball.hpp"
+#include "Fwoosh.hpp"
+#include "Polymorph.hpp"
+#include "SpellBook.hpp"
+#include "TargetGenerator.hpp"
+#include "Warlock.hpp"
 
 int main()
 {
